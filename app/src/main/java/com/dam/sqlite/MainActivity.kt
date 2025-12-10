@@ -98,21 +98,21 @@ class MainActivity : ComponentActivity() {
 
         // Define 'where' part of query.
         val selection2 = "${SQLite.FeedEntry.COLUMN_NAME_TITLE} LIKE ?"
-// Specify arguments in placeholder order.
+        // Specify arguments in placeholder order.
         val selectionArgs2 = arrayOf("MyTitle")
-// Issue SQL statement.
+        // Issue SQL statement.
         val deletedRows = db.delete(SQLite.FeedEntry.TABLE_NAME, selection2, selectionArgs2)
         Log.d(TAG,"Valores borrados")
 
         val db3 = dbHelper.writableDatabase
 
-// New value for one column
+    // New value for one column
         val title = "MyNewTitle"
         val values2 = ContentValues().apply {
             put(SQLite.FeedEntry.COLUMN_NAME_TITLE, title)
         }
 
-// Which row to update, based on the title
+    // Which row to update, based on the title
         val selection3 = "${SQLite.FeedEntry.COLUMN_NAME_TITLE} LIKE ?"
         val selectionArgs3 = arrayOf("MyOldTitle")
         val count = db3.update(
